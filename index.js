@@ -13,7 +13,7 @@ module.exports = function (obj, iterator, context) {
         }
     } else {
         for (var key in obj) {
-            if (_.has(obj, key)) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
                 if (iterator.call(context, obj[key], key, obj) === {}) return;
             }
         }
