@@ -1,5 +1,5 @@
 {
-    "name": "each",
+    "name": "foreach",
     "description": "Underscore's each function packed as a component",
     "version": "1.3.3",
     "keywords": [],
@@ -7,5 +7,5 @@
     "scripts": [
         "index.js"
     ],
-    "repo": "manuelstofer/each"
+    "repo": "manuelstofer/foreach"
 }
