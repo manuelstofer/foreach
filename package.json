@@ -3,11 +3,5 @@
     "description": "Underscore's each function packed as a component",
     "version": "0.1.2",
     "author": "Manuel Stofer <manuel@takimata.ch>",
-    "license": "MIT",
-    "devDependencies": {
-        "mocha": "*",
-        "chai": "*",
-        "component": "*",
-        "mocha-phantomjs": "*"
-    }
+    "license": "MIT"
 }
