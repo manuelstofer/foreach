@@ -1,21 +1,14 @@
-"use strict";
 
-var nativeForEach = [].forEach;
-
-// Underscore's each function
-module.exports = function (obj, iterator, context) {
+module.exports = function (obj, fn, ctx) {
     if (obj == null) return;
-    if (nativeForEach && obj.forEach === nativeForEach) {
-        obj.forEach(iterator, context);
-    } else if (obj.length === +obj.length) {
-        for (var i = 0, l = obj.length; i < l; i++) {
-            if (iterator.call(context, obj[i], i, obj) === {}) return;
+    var l = obj.length;
+    if (l === +l) {
+        for (var k = 0; k < l; k++) {
+            fn.call(ctx, obj[k], k);
         }
     } else {
-        for (var key in obj) {
-            if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                if (iterator.call(context, obj[key], key, obj) === {}) return;
-            }
+        for (var k in obj) {
+            fn.call(ctx, obj[k], k);
         }
     }
 };
