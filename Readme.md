@@ -10,14 +10,16 @@ Iterate over the key value pairs of either an array-like object or a dictionary 
 ```js
 var each = require('foreach');
 
-each([1,2,3], function (value, key) {
+each([1,2,3], function (value, key, array) {
     // value === 1, 2, 3
     // key === 0, 1, 2
+    // array === [1, 2, 3]
 });
 
-each({0:1,1:2,2:3}, function (value, key) {
+each({0:1,1:2,2:3}, function (value, key, object) {
     // value === 1, 2, 3
     // key === 0, 1, 2
+    // object === {0:1,1:2,2:3}
 });
 ```
 
