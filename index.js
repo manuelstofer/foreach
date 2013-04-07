@@ -1,5 +1,5 @@
 
-module.exports = function (obj, fn, ctx) {
+module.exports = function forEach(obj, fn, ctx) {
     if (obj == null) return;
     var l = obj.length;
     if (l === +l) {
@@ -14,3 +14,4 @@ module.exports = function (obj, fn, ctx) {
         }
     }
 };
+
