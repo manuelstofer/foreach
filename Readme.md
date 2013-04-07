@@ -3,6 +3,8 @@
 
 Iterate over the key value pairs of either an array-like object or a dictionary like object.
 
+[![browser support][1]][2]
+
 ## API
 
 ### foreach(object, function, [context])
@@ -23,4 +25,6 @@ each({0:1,1:2,2:3}, function (value, key, object) {
 });
 ```
 
+[1]: https://ci.testling.com/manuelstofer/foreach.png
+[2]: https://ci.testling.com/manuelstofer/foreach
 
