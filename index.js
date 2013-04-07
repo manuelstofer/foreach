@@ -1,7 +1,7 @@
 
 var hasOwn = Object.prototype.hasOwnProperty;
 
-module.exports = function forEach(obj, fn, ctx) {
+module.exports = function forEach (obj, fn, ctx) {
     if (obj == null) return;
     var l = obj.length;
     if (l === +l) {
@@ -10,10 +10,9 @@ module.exports = function forEach(obj, fn, ctx) {
         }
     } else {
         for (var k in obj) {
-            if (hasOwn.call(obj,k)) {
+            if (hasOwn.call(obj, k)) {
                 fn.call(ctx, obj[k], k, obj);
             }
         }
     }
 };
-
