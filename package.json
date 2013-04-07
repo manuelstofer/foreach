@@ -20,7 +20,9 @@
         "each"
     ],
     "dependencies": {},
-    "devDependencies": {},
+    "devDependencies": {
+      "tape": "~0.3.3"
+    },
     "testling": {
       "files": "test.js",
       "browsers": [
