@@ -1,4 +1,6 @@
 
+var hasOwn = Object.prototype.hasOwnProperty;
+
 module.exports = function forEach(obj, fn, ctx) {
     if (obj == null) return;
     var l = obj.length;
