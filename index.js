@@ -2,7 +2,9 @@
 var hasOwn = Object.prototype.hasOwnProperty;
 
 module.exports = function forEach (obj, fn, ctx) {
-    if (obj == null) return;
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('can only iterate over objects or arrays');
+    }
     var l = obj.length;
     if (l === +l) {
         for (var i = 0; i < l; i++) {
@@ -16,3 +18,4 @@ module.exports = function forEach (obj, fn, ctx) {
         }
     }
 };
+
