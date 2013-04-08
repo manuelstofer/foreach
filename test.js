@@ -1,6 +1,35 @@
 var test = require('tape');
 var forEach = require('./index.js');
 
+test('first argument: iterable', function (t) {
+  t.throws(function () { forEach(); }, TypeError, 'undefined is not iterable');
+  t.throws(function () { forEach(null); }, TypeError, 'null is not iterable');
+  t.throws(function () { forEach(''); }, TypeError, 'string is not iterable');
+  t.throws(function () { forEach(true); }, TypeError, 'true is not iterable');
+  t.throws(function () { forEach(false); }, TypeError, 'false is not iterable');
+  t.throws(function () { forEach(NaN); }, TypeError, 'NaN is not iterable');
+  t.throws(function () { forEach(42); }, TypeError, '42 is not iterable');
+  var iterator = function () {};
+  t.doesNotThrow(function () { forEach([], iterator); }, TypeError, 'array is iterable');
+  t.doesNotThrow(function () { forEach({}, iterator); }, TypeError, 'object is iterable');
+  t.doesNotThrow(function () { forEach(new Date(), iterator); }, TypeError, 'object subtype is iterable');
+  t.end();
+});
+
+test('second argument: iterator', function (t) {
+  var arr = [];
+  t.throws(function () { forEach(arr); }, TypeError, 'undefined is not a function');
+  t.throws(function () { forEach(arr, null); }, TypeError, 'null is not a function');
+  t.throws(function () { forEach(arr, ''); }, TypeError, 'string is not a function');
+  t.throws(function () { forEach(arr, /a/); }, TypeError, 'regex is not a function');
+  t.throws(function () { forEach(arr, true); }, TypeError, 'true is not a function');
+  t.throws(function () { forEach(arr, false); }, TypeError, 'false is not a function');
+  t.throws(function () { forEach(arr, NaN); }, TypeError, 'NaN is not a function');
+  t.throws(function () { forEach(arr, 42); }, TypeError, '42 is not a function');
+  t.doesNotThrow(function () { forEach(arr, function () {}); }, 'function is a function');
+  t.end();
+});
+
 test('array', function (t) {
   var arr = [1, 2, 3];
 
