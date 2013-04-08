@@ -2,14 +2,14 @@ var test = require('tape');
 var forEach = require('./index.js');
 
 test('first argument: iterable', function (t) {
-  t.throws(function () { forEach(); }, TypeError, 'undefined is not iterable');
-  t.throws(function () { forEach(null); }, TypeError, 'null is not iterable');
-  t.throws(function () { forEach(''); }, TypeError, 'string is not iterable');
-  t.throws(function () { forEach(true); }, TypeError, 'true is not iterable');
-  t.throws(function () { forEach(false); }, TypeError, 'false is not iterable');
-  t.throws(function () { forEach(NaN); }, TypeError, 'NaN is not iterable');
-  t.throws(function () { forEach(42); }, TypeError, '42 is not iterable');
   var iterator = function () {};
+  t.throws(function () { forEach(undefined, iterator); }, TypeError, 'undefined is not iterable');
+  t.throws(function () { forEach(null, iterator); }, TypeError, 'null is not iterable');
+  t.throws(function () { forEach(true, iterator); }, TypeError, 'true is not iterable');
+  t.throws(function () { forEach(false, iterator); }, TypeError, 'false is not iterable');
+  t.throws(function () { forEach(NaN, iterator); }, TypeError, 'NaN is not iterable');
+  t.throws(function () { forEach(42, iterator); }, TypeError, '42 is not iterable');
+  t.doesNotThrow(function () { forEach('', iterator); }, TypeError, 'string is iterable');
   t.doesNotThrow(function () { forEach([], iterator); }, TypeError, 'array is iterable');
   t.doesNotThrow(function () { forEach({}, iterator); }, TypeError, 'object is iterable');
   t.doesNotThrow(function () { forEach(new Date(), iterator); }, TypeError, 'object subtype is iterable');
@@ -141,3 +141,18 @@ test('object', function (t) {
   t.end();
 });
 
+
+test('string', function (t) {
+  var str = 'str';
+  t.test('second iterator argument', function (st) {
+    var counter = 0;
+    st.plan(str.length * 2 + 1);
+    forEach(str, function (item, index) {
+      st.equal(counter, index, 'index ' + index + ' is passed as second argument');
+      st.equal(str[index], item);
+      counter += 1;
+    });
+    st.equal(counter, str.length, 'iterates ' + str.length + ' times');
+  });
+  t.end();
+});

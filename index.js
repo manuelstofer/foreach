@@ -2,8 +2,8 @@
 var hasOwn = Object.prototype.hasOwnProperty;
 
 module.exports = function forEach (obj, fn, ctx) {
-    if (typeof obj !== 'object' || obj === null) {
-        throw new TypeError('can only iterate over objects or arrays');
+    if (!(typeof obj === 'object' || typeof obj === 'string') || obj === null) {
+        throw new TypeError('can only iterate over objects, arrays and strings');
     }
     if (typeof fn !== 'function') {
         throw new TypeError('iterator must be a function');
