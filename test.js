@@ -1,20 +1,6 @@
 var test = require('tape');
 var forEach = require('./index.js');
 
-test('first argument: iterable', function (t) {
-    var iterator = function () {};
-    t.throws(function () { forEach(undefined, iterator); }, TypeError, 'undefined is not iterable');
-    t.throws(function () { forEach(null, iterator); }, TypeError, 'null is not iterable');
-    t.throws(function () { forEach(true, iterator); }, TypeError, 'true is not iterable');
-    t.throws(function () { forEach(false, iterator); }, TypeError, 'false is not iterable');
-    t.throws(function () { forEach(NaN, iterator); }, TypeError, 'NaN is not iterable');
-    t.throws(function () { forEach(42, iterator); }, TypeError, '42 is not iterable');
-    t.doesNotThrow(function () { forEach('', iterator); }, TypeError, 'string is iterable');
-    t.doesNotThrow(function () { forEach([], iterator); }, TypeError, 'array is iterable');
-    t.doesNotThrow(function () { forEach({}, iterator); }, TypeError, 'object is iterable');
-    t.doesNotThrow(function () { forEach(new Date(), iterator); }, TypeError, 'object subtype is iterable');
-    t.end();
-});
 
 test('second argument: iterator', function (t) {
     var arr = [];
