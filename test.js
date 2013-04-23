@@ -13,6 +13,10 @@ test('second argument: iterator', function (t) {
     t.throws(function () { forEach(arr, NaN); }, TypeError, 'NaN is not a function');
     t.throws(function () { forEach(arr, 42); }, TypeError, '42 is not a function');
     t.doesNotThrow(function () { forEach(arr, function () {}); }, 'function is a function');
+    t.doesNotThrow(function () { forEach(arr, setTimeout); }, 'setTimeout is a function');
+    if (typeof window !== 'undefined') {
+        t.doesNotThrow(function () { forEach(arr, window.alert); }, 'alert is a function');
+    }
     t.end();
 });
 
@@ -142,3 +146,4 @@ test('string', function (t) {
     });
     t.end();
 });
+
