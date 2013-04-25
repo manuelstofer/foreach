@@ -1,4 +1,4 @@
-var test = require('tape');
+var test = require('tap').test;
 var forEach = require('./index.js');
 
 
@@ -142,3 +142,4 @@ test('string', function (t) {
     });
     t.end();
 });
+
