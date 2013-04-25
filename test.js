@@ -1,17 +1,18 @@
-var test = require('tape');
+var test = require('tap').test;
 var forEach = require('./index.js');
 
 
 test('second argument: iterator', function (t) {
     var arr = [];
-    t.throws(function () { forEach(arr); }, TypeError, 'undefined is not a function');
-    t.throws(function () { forEach(arr, null); }, TypeError, 'null is not a function');
-    t.throws(function () { forEach(arr, ''); }, TypeError, 'string is not a function');
-    t.throws(function () { forEach(arr, /a/); }, TypeError, 'regex is not a function');
-    t.throws(function () { forEach(arr, true); }, TypeError, 'true is not a function');
-    t.throws(function () { forEach(arr, false); }, TypeError, 'false is not a function');
-    t.throws(function () { forEach(arr, NaN); }, TypeError, 'NaN is not a function');
-    t.throws(function () { forEach(arr, 42); }, TypeError, '42 is not a function');
+    var error = new TypeError('iterator must be a function');
+    t.throws(function () { forEach(arr); }, error, 'undefined is not a function');
+    t.throws(function () { forEach(arr, null); }, error, 'null is not a function');
+    t.throws(function () { forEach(arr, ''); }, error, 'string is not a function');
+    t.throws(function () { forEach(arr, /a/); }, error, 'regex is not a function');
+    t.throws(function () { forEach(arr, true); }, error, 'true is not a function');
+    t.throws(function () { forEach(arr, false); }, error, 'false is not a function');
+    t.throws(function () { forEach(arr, NaN); }, error, 'NaN is not a function');
+    t.throws(function () { forEach(arr, 42); }, error, '42 is not a function');
     t.doesNotThrow(function () { forEach(arr, function () {}); }, 'function is a function');
     t.end();
 });
@@ -142,3 +143,4 @@ test('string', function (t) {
     });
     t.end();
 });
+

@@ -21,7 +21,7 @@
     ],
     "dependencies": {},
     "devDependencies": {
-      "tape": "*"
+      "tap": "~0.4.1"
     },
     "testling": {
       "files": "test.js",
