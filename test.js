@@ -139,7 +139,7 @@ test('string', function (t) {
         st.plan(str.length * 2 + 1);
         forEach(str, function (item, index) {
             st.equal(counter, index, 'index ' + index + ' is passed as second argument');
-            st.equal(str[index], item);
+            st.equal(str.charAt(index), item);
             counter += 1;
         });
         st.equal(counter, str.length, 'iterates ' + str.length + ' times');
