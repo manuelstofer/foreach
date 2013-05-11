@@ -37,6 +37,7 @@ test('array', function (t) {
             st.equal(arr[index], item, 'item ' + index + ' is passed as first argument');
             index += 1;
         });
+        st.end();
     });
 
     t.test('second iterator argument', function (st) {
@@ -46,6 +47,7 @@ test('array', function (t) {
             st.equal(counter, index, 'index ' + index + ' is passed as second argument');
             counter += 1;
         });
+        st.end();
     });
 
     t.test('third iterator argument', function (st) {
@@ -53,6 +55,7 @@ test('array', function (t) {
         forEach(arr, function (item, index, array) {
             st.deepEqual(arr, array, 'array is passed as third argument');
         });
+        st.end();
     });
 
     t.test('context argument', function (st) {
@@ -102,6 +105,7 @@ test('object', function (t) {
             st.equal(obj[keys[index]], item, 'item at key ' + keys[index] + ' is passed as first argument');
             index += 1;
         });
+        st.end();
     });
 
     t.test('second iterator argument', function (st) {
@@ -111,6 +115,7 @@ test('object', function (t) {
             st.equal(keys[counter], key, 'key ' + key + ' is passed as second argument');
             counter += 1;
         });
+        st.end();
     });
 
     t.test('third iterator argument', function (st) {
@@ -118,6 +123,7 @@ test('object', function (t) {
         forEach(obj, function (item, key, object) {
             st.deepEqual(obj, object, 'object is passed as third argument');
         });
+        st.end();
     });
 
     t.test('context argument', function (st) {
