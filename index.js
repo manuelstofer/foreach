@@ -1,8 +1,9 @@
 
 var hasOwn = Object.prototype.hasOwnProperty;
+var toString = Object.prototype.toString;
 
 module.exports = function forEach (obj, fn, ctx) {
-    if (typeof fn !== 'function') {
+    if (toString.call(fn) !== '[object Function]') {
         throw new TypeError('iterator must be a function');
     }
     var l = obj.length;
