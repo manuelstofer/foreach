@@ -3,6 +3,15 @@
     "description": "foreach component + npm package",
     "version": "2.0.3",
     "author": "Manuel Stofer <manuel@takimata.ch>",
+    "contributors": [
+      {
+        "name": "Manuel Stofer"
+      },
+      {
+        "name": "Jordan Harband",
+        "url": "https://github.com/ljharb"
+      }
+    ],
     "license": "MIT",
     "main": "index.js",
     "scripts": {
