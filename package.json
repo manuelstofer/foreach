@@ -3,6 +3,15 @@
     "description": "foreach component + npm package",
     "version": "2.0.3",
     "author": "Manuel Stofer <manuel@takimata.ch>",
+    "contributors": [
+      {
+        "name": "Manuel Stofer"
+      },
+      {
+        "name": "Jordan Harband",
+        "url": "https://github.com/ljharb"
+      }
+    ],
     "license": "MIT",
     "main": "index.js",
     "scripts": {
@@ -37,7 +46,8 @@
         "opera/next",
         "safari/5.0.5..latest",
         "ipad/6.0..latest",
-        "iphone/6.0..latest"
+        "iphone/6.0..latest",
+        "android-browser/4.2"
       ]
     }
 }
