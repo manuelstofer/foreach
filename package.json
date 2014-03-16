@@ -15,7 +15,9 @@
     "license": "MIT",
     "main": "index.js",
     "scripts": {
-        "test": "node test.js"
+        "test": "node test.js",
+        "coverage": "covert test.js",
+        "coverage-quiet": "covert --quiet test.js"
     },
     "repository": {
         "type": "git",
@@ -30,7 +32,8 @@
     ],
     "dependencies": {},
     "devDependencies": {
-      "tape": "*"
+      "tape": "*",
+      "covert": "*"
     },
     "testling": {
       "files": "test.js",
