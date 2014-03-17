@@ -60,7 +60,8 @@ test('array', function (t) {
 
     t.test('context argument', function (st) {
         var context = {};
-        forEach([], function () {
+        st.plan(1);
+        forEach([1], function () {
             st.equal(this, context, '"this" is the passed context');
         }, context);
         st.end();
@@ -128,7 +129,8 @@ test('object', function (t) {
 
     t.test('context argument', function (st) {
         var context = {};
-        forEach({}, function () {
+        st.plan(1);
+        forEach({ a: 1 }, function () {
             st.equal(this, context, '"this" is the passed context');
         }, context);
         st.end();
