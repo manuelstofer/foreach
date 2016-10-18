@@ -1,6 +1,8 @@
 
 # foreach
 
+[![CDNJS](https://img.shields.io/cdnjs/v/foreach.svg)](https://cdnjs.com/libraries/foreach)
+
 Iterate over the key value pairs of either an array-like object or a dictionary like object.
 
 [![browser support][1]][2]
