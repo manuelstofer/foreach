@@ -9,12 +9,14 @@ module.exports = function forEach (obj, fn, ctx) {
     var l = obj.length;
     if (l === +l) {
         for (var i = 0; i < l; i++) {
-            fn.call(ctx, obj[i], i, obj);
+            if (false === fn.call(ctx, obj[i], i, obj)) {
+                break;
+            }
         }
     } else {
         for (var k in obj) {
-            if (hasOwn.call(obj, k)) {
-                fn.call(ctx, obj[k], k, obj);
+            if (hasOwn.call(obj, k) && false === fn.call(ctx, obj[k], k, obj)) {
+                break;
             }
         }
     }
