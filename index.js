@@ -1,4 +1,3 @@
-
 var hasOwn = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
 
@@ -6,9 +5,11 @@ module.exports = function forEach (obj, fn, ctx) {
     if (toString.call(fn) !== '[object Function]') {
         throw new TypeError('iterator must be a function');
     }
-    var l = obj.length;
-    if (l === +l) {
-        for (var i = 0; i < l; i++) {
+
+    var type = toString.call(obj);
+
+    if ('[object Array]' === type || '[object String]' === type) {
+        for (var i = 0, l = obj.length; i < l; i++) {
             fn.call(ctx, obj[i], i, obj);
         }
     } else {
@@ -19,4 +20,3 @@ module.exports = function forEach (obj, fn, ctx) {
         }
     }
 };
-
