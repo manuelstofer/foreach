@@ -1,9 +1,18 @@
+'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
 
-module.exports = function forEach (obj, fn, ctx) {
-    if (toString.call(fn) !== '[object Function]') {
+var isFunction = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol' ?
+    function isFunction(fn) {
+        return typeof fn === 'function';
+    } :
+    function isFunction(fn) {
+        return toString.call(fn) === '[object Function]';
+    };
+
+module.exports = function forEach(obj, fn, ctx) {
+    if (!isFunction(fn)) {
         throw new TypeError('iterator must be a function');
     }
     var l = obj.length;
@@ -19,4 +28,3 @@ module.exports = function forEach (obj, fn, ctx) {
         }
     }
 };
-
