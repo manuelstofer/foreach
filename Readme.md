@@ -25,6 +25,19 @@ each({0:1,1:2,2:3}, function (value, key, object) {
     // key === 0, 1, 2
     // object === {0:1,1:2,2:3}
 });
+
+// break & continue
+each([1,2,3], function (value, key, array) {
+    if (1 === value) {
+        // continue loop
+        return true;
+    }
+
+    if (2 === value) {
+        // break loop
+        return false;
+    }
+});
 ```
 
 [1]: https://ci.testling.com/manuelstofer/foreach.png
