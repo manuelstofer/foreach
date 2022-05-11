@@ -1,6 +1,7 @@
+'use strict';
+
 var test = require('tape');
 var forEach = require('./index.js');
-
 
 test('second argument: iterator', function (t) {
     var arr = [];
@@ -151,3 +152,37 @@ test('string', function (t) {
     t.end();
 });
 
+
+test('Symbol.toStringTag', {
+    skip: typeof Symbol !== 'function' || typeof Symbol.toStringTag !== 'symbol'
+}, function (t) {
+    var arr = [1, 2, 3];
+
+    t['throws'](function () {
+        var callback = {};
+        callback[Symbol.toStringTag] = 'Function';
+
+        forEach(arr, callback);
+    }, 'non-function with spoofed [Symbol.toStringTag] is rejected');
+
+    t.test('callback with custom [Symbol.toStringTag]', function (st) {
+        st.plan(2 + (arr.length * 2))
+
+        var counter = 0;
+        var callback = function (item, index) {
+            st.equal(arr[index], item, 'item ' + index + ' is passed as first argument');
+            st.equal(counter, index, 'index ' + index + ' is passed as second argument');
+            counter++;
+        };
+        callback[Symbol.toStringTag] = 'Custom callback';
+
+        st.doesNotThrow(function () {
+            forEach(arr, callback);
+        });
+
+        st.equal(counter, arr.length, 'iterates ' + arr.length + ' times');
+        st.end();
+    });
+
+    t.end();
+});
