@@ -1,8 +1,8 @@
 {
     "name": "foreach",
     "description": "foreach component + npm package",
-    "version": "2.0.5",
-    "author": "Manuel Stofer <manuel@takimata.ch>",
+    "version": "2.0.6",
+    "author": "Manuel Stofer <manuelstofer@gmail.com>",
     "contributors": [
       {
         "name": "Manuel Stofer"
